@@ -1,18 +1,22 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 
-export interface CounterState {
-  value: number
+export interface UserState {
+  username?: string,
+  password?: string | number,
 }
 
-const initialState: CounterState = {
-  value: 0,
+const initialState: UserState = {
+  username: 'huyen',
+  password: '123456'
 }
 export const authorSlice = createSlice({
-  name: 'user',
+  name: 'author',
   initialState,
   reducers: {
-    info: (state) => {}
+    info: (state) => {
+      console.log('state', state)
+    }
   }
 });
 export const { info } = authorSlice.actions;

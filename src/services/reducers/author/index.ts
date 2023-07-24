@@ -1,12 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
-import type { PayloadAction } from '@reduxjs/toolkit';
+import { TUser } from './type';
 
-export interface UserState {
-  username?: string,
-  password?: string | number,
-}
-
-const initialState: UserState = {
+const initialState: TUser = {
   username: 'huyen',
   password: '123456'
 }
@@ -14,10 +9,10 @@ export const authorSlice = createSlice({
   name: 'author',
   initialState,
   reducers: {
-    info: (state) => {
-      console.log('state', state)
+    user: (state, action) => { // action: type action
+      return state;
     }
   }
 });
-export const { info } = authorSlice.actions;
+export const { user } = authorSlice.actions;
 export default authorSlice.reducer;

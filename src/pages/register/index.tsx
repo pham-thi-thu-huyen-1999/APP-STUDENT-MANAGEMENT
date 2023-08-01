@@ -1,43 +1,28 @@
-import React from "react";
-import { useForm } from "react-hook-form";
-import { Input } from "antd";
-import { StyledRegister, StyledField, StyledHeading } from "./style";
+import React, { useState } from "react";
+import { Input, Form, Button } from "antd";
+import { StyledRegister, StyledHeading } from "./style";
 
-type TForm = {
-  userName: string;
-  email: string;
-  password: string;
-  passwordConfirm: string;
-};
 const Register = () => {
-  const {
-    register,
-    setValue,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<TForm>();
-  const onSubmit = handleSubmit((data) => console.log(data, errors));
   return (
     <StyledRegister>
       <StyledHeading>Register</StyledHeading>
-      <form onSubmit={onSubmit}>
-        <StyledField>
-          <label>User Name</label>
-          <input {...register("userName", { required: true })} />
-        </StyledField>
-        <StyledField>
-          <label>Email</label>
-          <input {...register("email", { required: true })} />
-        </StyledField>
-        <StyledField>
-          <label>Password</label>
-          <input {...register("password", { required: true })} />
-        </StyledField>
-        <StyledField>
-          <label>Password Confirm</label>
-          <input {...register("password", { required: true })} />
-        </StyledField>
-      </form>
+      <Form labelCol={{ span: 4 }}>
+        <Form.Item name="userName" label="UserName">
+          <Input />
+        </Form.Item>
+        <Form.Item name="email" label="email">
+          <Input />
+        </Form.Item>
+        <Form.Item name="password" label="password">
+          <Input />
+        </Form.Item>
+        <Form.Item name="passwordConfirm" label="Password Confirm">
+          <Input />
+        </Form.Item>
+        <Form.Item name="passwordConfirm" wrapperCol={{ span: 4, offset: 4 }}>
+          <Button type="primary">Register</Button>
+        </Form.Item>
+      </Form>
     </StyledRegister>
   );
 };
